@@ -11,25 +11,25 @@
       (ngSubmit)="onSubmit(registerForm)"
     >
       <label
-        for="firstname"
+        for="userName"
         class="block text-xs font-semibold text-gray-600 uppercase"
-        >Firstname</label
+        >User Name</label
       >
       <input
-        id="firstname"
+        id="userName"
         type="text"
-        name="firstName"
-        formControlName="firstName"
+        name="userName"
+        formControlName="userName"
         placeholder="First name"
         autocomplete="given-name"
         class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
         required
       />
       <div
-        *ngIf="AllControles?.firstName?.errors && submitted"
+        *ngIf="AllControles?.userName?.errors && submitted"
         class="block w-full p-3 mt-2 text-red-700 bg-red-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
       >
-        <p>FirstName is required</p>
+        <p>userName is required</p>
       </div>
 
       <label
@@ -54,7 +54,7 @@
         <p>Invalid email</p>
       </div>
       <div
-        *ngIf="AllControles?.firstName?.errors && submitted"
+        *ngIf="AllControles?.userName?.errors && submitted"
         class="block w-full p-3 mt-2 text-red-700 bg-red-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
       >
         <p>Email is required</p>

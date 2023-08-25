@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserLogin } from './utilitys/loginInterface';
+import { AuthService } from './service/auth.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -12,12 +15,17 @@ export class AuthComponent implements OnInit {
 
   error!: string;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {}
 
   registerForm = this.fb.group({
-    firstName: ['', [Validators.required]],
+    userName: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
     confirmPassword: ['', Validators.required],
@@ -38,9 +46,11 @@ export class AuthComponent implements OnInit {
     }
     const formData = this.registerForm.value;
 
-    // this.authService.register(formData).subscribe((res) => {
-    //   this.toastr.success(res.message);
-    //   this.router.navigateByUrl('/login');
-    // });
+    this.authService.register(formData).subscribe((res) => {
+      console.log(res, 'register');
+
+      this.toastr.success(res.message);
+      this.router.navigateByUrl('/login');
+    });
   }
 }
