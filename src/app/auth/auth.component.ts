@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
 })
 export class AuthComponent implements OnInit {
   submitted: boolean = false;
-
   error!: string;
 
   constructor(
