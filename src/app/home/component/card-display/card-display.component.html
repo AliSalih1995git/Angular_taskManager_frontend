@@ -1,0 +1,34 @@
+<ng-container *ngIf="task; else noTask">
+  <div class="max-w-sm mt-2 rounded overflow-hidden shadow-lg gap-1">
+    <div class="px-6 py-2">
+      <div class="font-bold text-xl mb-2">{{ task.title }}</div>
+    </div>
+    <p class="p-2">{{ task.description }}</p>
+    <div class="flex flex-col justify-between w-full p-2">
+      <div class="flex justify-between">
+        <h6>{{ task.assignedTo.userName }}</h6>
+        <h6>{{ task.status }}</h6>
+      </div>
+      <div class="flex justify-between">
+        <h6>{{ task.createdAt | date }}</h6>
+        <h6>{{ task.dueDate | date }}</h6>
+      </div>
+      <div class="flex justify-end">
+        <h6>{{ formatTimestamp(task.dueDate) }}</h6>
+      </div>
+      <div class="">
+        <button class="dark:bg-gray-900 text-white p-2 w-full">
+          update status
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #noTask>
+  <div class="max-w-sm mt-2 rounded overflow-hidden shadow-lg gap-2">
+    <div class="px-6 py-2">
+      <div class="font-bold text-xl mb-2">No task</div>
+    </div>
+  </div>
+</ng-template>

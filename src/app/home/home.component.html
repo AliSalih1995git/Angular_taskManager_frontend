@@ -67,5 +67,16 @@
 
 <!-- home container -->
 <div class="container">
-  <app-list-data></app-list-data>
+  <div
+    class="block w-full p-3 mt-2 text-gray-900 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
+  >
+    <h1 class="text-xl">
+      Employee: {{ userTaskArray[0]?.assignedTo?.userName }}
+    </h1>
+    <h6></h6>
+  </div>
+
+  <div>
+    <app-list-data [userTaskArray]="userTaskArray"></app-list-data>
+  </div>
 </div>
