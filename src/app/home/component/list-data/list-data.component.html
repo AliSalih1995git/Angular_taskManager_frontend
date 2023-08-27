@@ -30,7 +30,7 @@
       {{ (userTaskArray | filterByStatus : "completed").length }} issue
     </h5>
     <div *ngFor="let task of userTaskArray | filterByStatus : 'completed'">
-      <app-card-display [task]="task"></app-card-display>
+      <app-card-display [task]="task" url="/user/editTask"></app-card-display>
     </div>
   </div>
 </div>

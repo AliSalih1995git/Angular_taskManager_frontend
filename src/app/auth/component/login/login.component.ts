@@ -42,7 +42,13 @@ export class LoginComponent implements OnInit {
       next: (res) => {
         localStorage.setItem('user', JSON.stringify(res));
         this.toastr.success(res.message);
-        this.router.navigateByUrl('/home');
+        console.log(res, 'login response');
+        let role = res.others.role;
+        if (role == 'user') {
+          this.router.navigateByUrl('home');
+        } else if (role == 'admin') {
+          this.router.navigateByUrl('admin');
+        }
       },
       error: (error) => {
         this.toastr.error(error.error.message);

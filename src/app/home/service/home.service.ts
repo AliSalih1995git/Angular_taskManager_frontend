@@ -11,7 +11,7 @@ export class HomeService {
 
   logout() {
     localStorage.clear();
-    this.router.navigateByUrl('auth/login');
+    this.router.navigateByUrl('auth');
   }
 
   getUserTask(): Observable<any> {
