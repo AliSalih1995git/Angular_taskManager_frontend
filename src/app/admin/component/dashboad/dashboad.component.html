@@ -1,0 +1,36 @@
+<div class="flex flex-col sm:flex-row flex-wrap gap-2">
+  <div
+    class="block mt-2 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 min-h-screen"
+  >
+    <h5 class="w-full h-8 p-2 bg-gray-400">
+      To Do {{ (allTasks | filterByStatus : "to-do").length }} issue
+    </h5>
+    <div *ngFor="let task of allTasks | filterByStatus : 'to-do'">
+      <app-card-display [task]="task" url="/admin/editTask"></app-card-display>
+    </div>
+  </div>
+
+  <div
+    class="block mt-2 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100"
+  >
+    <h5 class="w-full h-8 p-2 bg-gray-400">
+      In-Progress
+      {{ (allTasks | filterByStatus : "in-progress").length }} issue
+    </h5>
+    <div *ngFor="let task of allTasks | filterByStatus : 'in-progress'">
+      <app-card-display [task]="task" url="/admin/editTask"></app-card-display>
+    </div>
+  </div>
+
+  <div
+    class="block mt-2 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100"
+  >
+    <h5 class="w-full h-8 p-2 bg-gray-400">
+      Completed
+      {{ (allTasks | filterByStatus : "completed").length }} issue
+    </h5>
+    <div *ngFor="let task of allTasks | filterByStatus : 'completed'">
+      <app-card-display [task]="task" url="/admin/editTask"></app-card-display>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,179 @@
+<div class="flex flex-col justify-center items-center">
+  <div class="m-4">
+    <h2>{{ head }}</h2>
+  </div>
+  <form
+    class="border rounded-sm p-8 dark:bg-gray-800"
+    #taskForm="ngForm"
+    (ngSubmit)="onSubmit(taskForm)"
+  >
+    <div class="relative z-0 w-full mb-6 group">
+      <input
+        type="text"
+        id="floating_email"
+        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        placeholder=" "
+        name="title"
+        #title="ngModel"
+        [(ngModel)]="data.title"
+        required
+      />
+      <label
+        for="floating_email"
+        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        >Title</label
+      >
+      <div
+        *ngIf="taskForm.submitted && title.invalid && title.touched"
+        class="text-red-500 text-sm mt-1"
+      >
+        title is required.
+      </div>
+    </div>
+    <div class="relative z-0 w-full mb-6 group">
+      <input
+        type="text"
+        name="description"
+        id="description"
+        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        placeholder=" "
+        #description="ngModel"
+        [(ngModel)]="data.description"
+        required
+      />
+      <label
+        for="description"
+        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        >Task Description</label
+      >
+      <div
+        *ngIf="taskForm.submitted && description.invalid && description.touched"
+        class="text-red-500 text-sm mt-1"
+      >
+        description is required.
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 md:gap-6">
+      <div class="relative z-0 w-full mb-6 group">
+        <input
+          type="date"
+          name="date"
+          id="floating_first_name"
+          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          placeholder=" "
+          #date="ngModel"
+          [(ngModel)]="data.date"
+          required
+        />
+        <label
+          for="date"
+          class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+          >Due Date
+        </label>
+        <div
+          *ngIf="taskForm.submitted && date.invalid && date.touched"
+          class="text-red-500 text-sm mt-1"
+        >
+          date is required.
+        </div>
+      </div>
+      <div class="relative z-0 w-full mb-6 group">
+        <select
+          id="floating_option"
+          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          name="priority"
+          [(ngModel)]="data.priority"
+          #priority="ngModel"
+          required
+        >
+          <option value="" disabled selected hidden></option>
+          <option
+            *ngFor="let priority of priorities"
+            [value]="priority"
+            class="bg-gray-800 pl-2"
+          >
+            {{ priority }}
+          </option>
+        </select>
+        <label
+          for="floating_option"
+          class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+          >Priority</label
+        >
+        <div
+          *ngIf="taskForm.submitted && priority.invalid && priority.touched"
+          class="text-red-500 text-sm mt-1"
+        >
+          Priority is required.
+        </div>
+      </div>
+    </div>
+    <div class="relative z-0 w-full mb-6 group">
+      <select
+        id="floating_option"
+        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        name="status"
+        [(ngModel)]="data.status"
+        #status="ngModel"
+        required
+      >
+        <option value="" disabled selected hidden></option>
+        <option
+          *ngFor="let status of statuses"
+          [value]="status"
+          class="bg-gray-800 pl-2"
+        >
+          {{ status }}
+        </option>
+      </select>
+      <label
+        for="floating_option"
+        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        >Status</label
+      >
+      <div
+        *ngIf="taskForm.submitted && status.invalid && status.touched"
+        class="text-red-500 text-sm mt-1"
+      >
+        Status is required.
+      </div>
+    </div>
+    <div class="relative z-0 w-full mb-6 group">
+      <select
+        id="floating_option"
+        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        name="userName"
+        [(ngModel)]="data.userName"
+        #userName="ngModel"
+        required
+      >
+        <option value="" disabled selected hidden></option>
+        <option
+          *ngFor="let user of users"
+          [value]="user._id"
+          class="bg-gray-800 pl-2"
+        >
+          {{ user.userName }}
+        </option>
+      </select>
+      <label
+        for="floating_option"
+        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        >Assign To : <small>{{ data?.userName }}</small></label
+      >
+    </div>
+    <div
+      *ngIf="taskForm.submitted && userName.invalid && userName.touched"
+      class="text-red-500 text-sm mt-1"
+    >
+      username is required.
+    </div>
+    <button
+      type="submit"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    >
+      Submit
+    </button>
+  </form>
+</div>

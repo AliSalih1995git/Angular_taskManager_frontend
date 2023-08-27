@@ -12,7 +12,7 @@ import { SingleTask } from './models/homeModel';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private ohmeService: HomeService, private store: Store) {}
+  constructor(private homeService: HomeService, private store: Store) {}
   toggleVisible: boolean = true;
   userTaskArray!: SingleTask[];
 
@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   }
 
   logoutHandler() {
-    this.ohmeService.logout();
+    this.homeService.logout();
   }
   handleToggle() {
     console.log(this.toggleVisible);

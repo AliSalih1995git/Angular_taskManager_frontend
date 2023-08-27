@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { format } from 'timeago.js';
 
 @Component({
@@ -8,7 +9,8 @@ import { format } from 'timeago.js';
 })
 export class CardDisplayComponent implements OnInit {
   @Input() task: any;
-  constructor() {}
+  @Input() url!: string;
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     console.log(this.task, 'card -diplay');
@@ -16,5 +18,11 @@ export class CardDisplayComponent implements OnInit {
 
   formatTimestamp(timestamp: number): string {
     return format(timestamp);
+  }
+
+  onSubmit(id: number) {
+    console.log(`${this.url}/${id}`, 'urlllllllllll');
+
+    this.router.navigateByUrl(`${this.url}/${id}`);
   }
 }

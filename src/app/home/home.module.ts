@@ -10,5 +10,6 @@ import { ShareModule } from '../share/share/share.module';
 @NgModule({
   declarations: [HomeComponent, ListDataComponent, CardDisplayComponent],
   imports: [CommonModule, HomeRoutingModule, ShareModule],
+  exports: [ListDataComponent, CardDisplayComponent],
 })
 export class HomeModule {}
