@@ -14,6 +14,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { UserTaskReducer } from './home/store/Home.Reducer';
 import { UserTaskEffect } from './home/store/Home.Effects';
+// import { BackgroundChangeDirective } from './share/directive/background-change.directive';
 
 @NgModule({
   declarations: [AppComponent],

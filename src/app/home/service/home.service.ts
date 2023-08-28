@@ -17,4 +17,10 @@ export class HomeService {
   getUserTask(): Observable<any> {
     return this.http.get(`/task/singleUserTask`);
   }
+  singleTask(id: string): Observable<any> {
+    return this.http.get(`/task/singleTaskHome/${id}`);
+  }
+  updateStatus(taskId: string, status: object): Observable<any> {
+    return this.http.patch(`/task/${taskId}`, status);
+  }
 }

@@ -1,36 +1,42 @@
 <div class="flex flex-col sm:flex-row flex-wrap gap-2">
   <div
-    class="block mt-2 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 h-screen"
+    class="block mt-2 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow h-screen"
+    appBackgroundChange
+    [status]="status1"
   >
     <h5 class="w-full h-8 p-2 bg-gray-400">
       To Do {{ (userTaskArray | filterByStatus : "to-do").length }} issue
     </h5>
     <div *ngFor="let task of userTaskArray | filterByStatus : 'to-do'">
-      <app-card-display [task]="task"></app-card-display>
+      <app-card-display [task]="task" url="/home/editTask"></app-card-display>
     </div>
   </div>
 
   <div
-    class="block mt-2 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100"
+    class="block mt-2 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow"
+    appBackgroundChange
+    [status]="status2"
   >
     <h5 class="w-full h-8 p-2 bg-gray-400">
       In-Progress
       {{ (userTaskArray | filterByStatus : "in-progress").length }} issue
     </h5>
     <div *ngFor="let task of userTaskArray | filterByStatus : 'in-progress'">
-      <app-card-display [task]="task"></app-card-display>
+      <app-card-display [task]="task" url="/home/editTask"></app-card-display>
     </div>
   </div>
 
   <div
     class="block mt-2 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100"
+    appBackgroundChange
+    [status]="status3"
   >
     <h5 class="w-full h-8 p-2 bg-gray-400">
       Completed
       {{ (userTaskArray | filterByStatus : "completed").length }} issue
     </h5>
     <div *ngFor="let task of userTaskArray | filterByStatus : 'completed'">
-      <app-card-display [task]="task" url="/user/editTask"></app-card-display>
+      <app-card-display [task]="task" url="/home/editTask"></app-card-display>
     </div>
   </div>
 </div>

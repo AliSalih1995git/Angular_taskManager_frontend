@@ -8,8 +8,8 @@ import { format } from 'timeago.js';
   styleUrls: ['./card-display.component.css'],
 })
 export class CardDisplayComponent implements OnInit {
+  @Input() url: string = '';
   @Input() task: any;
-  @Input() url!: string;
   constructor(private router: Router) {}
 
   ngOnInit(): void {
@@ -20,7 +20,7 @@ export class CardDisplayComponent implements OnInit {
     return format(timestamp);
   }
 
-  onSubmit(id: number) {
+  onSubmit(id: string) {
     console.log(`${this.url}/${id}`, 'urlllllllllll');
 
     this.router.navigateByUrl(`${this.url}/${id}`);

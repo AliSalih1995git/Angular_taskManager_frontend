@@ -8,6 +8,9 @@ import { SingleTask, TaskModel } from '../../models/homeModel';
 })
 export class ListDataComponent implements OnInit {
   @Input() userTaskArray!: SingleTask[];
+  status1: string = 'to-do';
+  status2: string = 'in-progress';
+  status3: string = 'completed';
 
   constructor() {}
 
