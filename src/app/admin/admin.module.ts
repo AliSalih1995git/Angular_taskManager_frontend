@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { EditTaskComponent } from './component/edit-task/edit-task.component';
 import { FormComponent } from './component/form/form.component';
 import { ShareModule } from '../share/share.module';
+import { EmployeeManagementComponent } from './component/employee-management/employee-management.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ShareModule } from '../share/share.module';
     AddTaskComponent,
     EditTaskComponent,
     FormComponent,
+    EmployeeManagementComponent,
   ],
   imports: [
     CommonModule,

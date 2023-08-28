@@ -49,7 +49,7 @@ export class AuthComponent implements OnInit {
       console.log(res, 'register');
 
       this.toastr.success(res.message);
-      this.router.navigateByUrl('/login');
+      this.router.navigateByUrl('auth');
     });
   }
 }

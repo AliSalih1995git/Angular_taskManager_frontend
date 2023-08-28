@@ -26,3 +26,14 @@ export interface FormSubmission {
   status: string;
   userName: string;
 }
+
+export interface user {
+  blocked: boolean;
+  _id: string;
+  userName: string;
+  email: string;
+  role: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}

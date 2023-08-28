@@ -1,0 +1,86 @@
+<div class="container flex flex-col">
+  <div class="-m-1.5 overflow-x-auto">
+    <div class="p-1.5 min-w-full inline-block align-middle">
+      <div class="overflow-hidden">
+        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+          <thead>
+            <tr>
+              <th class="mt-6">
+                <input
+                  class="p-2"
+                  type="text"
+                  placeholder="Search by Name"
+                  [(ngModel)]="searchTerm"
+                />
+              </th>
+            </tr>
+            <tr>
+              <th
+                scope="col"
+                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+              >
+                Name
+              </th>
+              <th
+                scope="col"
+                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+              >
+                Email
+              </th>
+
+              <th
+                scope="col"
+                class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase"
+              >
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              class="odd:bg-white even:bg-gray-100 dark:odd:bg-slate-900 dark:even:bg-slate-800"
+              *ngFor="let user of users | customfilter : searchTerm"
+            >
+              <td
+                class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200"
+              >
+                {{ user.userName }}
+              </td>
+              <td
+                class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200"
+              >
+                {{ user.email }}
+              </td>
+
+              <td
+                class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
+              >
+                <span
+                  *ngIf="user.blocked"
+                  class="text-blue-500 hover:text-blue-700 mr-4 cursor-pointer"
+                  (click)="handleunblock(user._id)"
+                  >unblock</span
+                >
+                <span
+                  *ngIf="!user.blocked"
+                  class="text-blue-500 hover:text-blue-700 mr-4 cursor-pointer"
+                  (click)="handleblock(user._id)"
+                  >block</span
+                >
+                <span
+                  class="text-blue-500 hover:text-blue-700 cursor-pointer"
+                  (click)="handleDelete(user._id)"
+                  >Delete</span
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-4 font-bold cursor-pointer">
+    <a routerLink="/admin"> Back to home</a>
+  </div>
+</div>

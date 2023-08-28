@@ -4,9 +4,16 @@ import { AdminComponent } from './admin.component';
 import { AddTaskComponent } from './component/add-task/add-task.component';
 import { EditTaskComponent } from './component/edit-task/edit-task.component';
 import { AdminActiveguardGuard } from '../guard/admin-activeguard.guard';
+import { EmployeeManagementComponent } from './component/employee-management/employee-management.component';
+import { DashboadComponent } from './component/dashboad/dashboad.component';
 
 const routes: Routes = [
   { path: '', component: AdminComponent, canActivate: [AdminActiveguardGuard] },
+  {
+    path: 'dashboard',
+    component: DashboadComponent,
+    canActivate: [AdminActiveguardGuard],
+  },
   {
     path: 'addtask',
     component: AddTaskComponent,
@@ -25,6 +32,11 @@ const routes: Routes = [
   {
     path: 'editTask/:taskId',
     component: EditTaskComponent,
+    canActivate: [AdminActiveguardGuard],
+  },
+  {
+    path: 'employee',
+    component: EmployeeManagementComponent,
     canActivate: [AdminActiveguardGuard],
   },
 ];

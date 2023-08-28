@@ -9,9 +9,24 @@ import { Observable } from 'rxjs';
 export class AdminService {
   constructor(private http: HttpClient) {}
 
+  // user related task
   getAllTask(): Observable<any> {
     return this.http.get('/task');
   }
+  getAllUsers(): Observable<any> {
+    return this.http.get('/auth');
+  }
+  deleteUser(id: string): Observable<any> {
+    return this.http.delete(`/auth/${id}`);
+  }
+  bloack(id: string): Observable<any> {
+    return this.http.put(`/auth/block/${id}`, {});
+  }
+  unblock(id: string): Observable<any> {
+    return this.http.put(`/auth/unblock/${id}`, {});
+  }
+
+  // task related service
   singleTask(id: string): Observable<any> {
     return this.http.get(`/task/singleTask/${id}`);
   }
@@ -26,8 +41,5 @@ export class AdminService {
   }
   deleteTask(id: string): Observable<any> {
     return this.http.delete(`/task/${id}`);
-  }
-  getAllUsers(): Observable<any> {
-    return this.http.get('/auth');
   }
 }
